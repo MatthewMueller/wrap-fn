@@ -16,7 +16,7 @@ describe('wrap-fn', function() {
     it('should work if fn is undefined', function(done) {
 
       function next(err, a, b) {
-        assert(this.ctx = 'ctx');
+        assert('ctx' == this.ctx);
         assert('a' == a);
         assert('b' == b);
         assert(!err);
@@ -32,7 +32,7 @@ describe('wrap-fn', function() {
       var called = 0;
 
       function sync(a, b) {
-        assert(this.ctx = 'ctx');
+        assert('ctx' == this.ctx);
         assert('a' == a);
         assert('b' == b);
         called++;
@@ -54,7 +54,7 @@ describe('wrap-fn', function() {
 
       function sync(a, b) {
         called++;
-        assert(this.ctx = 'ctx');
+        assert('ctx' == this.ctx);
         assert('a' == a);
         assert('b' == b);
 
@@ -76,7 +76,7 @@ describe('wrap-fn', function() {
 
       function sync(a, b) {
         called++;
-        assert(this.ctx = 'ctx');
+        assert('ctx' == this.ctx);
         assert('a' == a);
         assert('b' == b);
 
@@ -97,7 +97,7 @@ describe('wrap-fn', function() {
       var called = 0;
 
       function promise(a) {
-        assert(this.ctx = 'ctx');
+        assert('ctx' == this.ctx);
         assert('a' == a);
         called++;
 
@@ -122,7 +122,7 @@ describe('wrap-fn', function() {
       var called = 0;
 
       function promise(a, b) {
-        assert(this.ctx = 'ctx');
+        assert('ctx' == this.ctx);
         assert('a' == a);
         assert('b' == b);
         called++;
@@ -150,7 +150,7 @@ describe('wrap-fn', function() {
       var called = 0;
 
       function async(a, b, fn) {
-        assert(this.ctx = 'ctx');
+        assert('ctx' == this.ctx);
         assert('a' == a);
         assert('b' == b);
         called++;
@@ -173,7 +173,7 @@ describe('wrap-fn', function() {
 
       function async(a, b, fn) {
         called++;
-        assert(this.ctx = 'ctx');
+        assert('ctx' == this.ctx);
         assert('a' == a);
         assert('b' == b);
         fn(new Error('some error'));
@@ -194,7 +194,7 @@ describe('wrap-fn', function() {
 
       function async(a, b, fn) {
         called++;
-        assert(this.ctx = 'ctx');
+        assert('ctx' == this.ctx);
         assert('a' == a);
         assert('b' == b);
         throw new Error('some error');
@@ -216,7 +216,7 @@ describe('wrap-fn', function() {
       var called = 0;
 
       function *gen(a, b) {
-        assert(this.ctx = 'ctx');
+        assert('ctx' == this.ctx);
         assert('a' == a);
         assert('b' == b);
         yield process.nextTick;
@@ -239,7 +239,7 @@ describe('wrap-fn', function() {
 
       function *gen(a, b) {
         called++;
-        assert(this.ctx = 'ctx');
+        assert('ctx' == this.ctx);
         assert('a' == a);
         assert('b' == b);
         throw new Error('some error');
